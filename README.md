@@ -12,7 +12,7 @@ discover destinations and cultural experiences that match a feeling — not a ch
 ## Live demo
 
 - **URL:** http://168.144.24.204:8081
-- **Test credentials:** `demo@ghummakad.app` / `ghummakad123`
+- **Test credentials:** `nihalgupta11213@gmail.com` / `hello1234`
   (or create your own account — signup is open and accounts are auto-confirmed)
 
 ## What works today (v1)

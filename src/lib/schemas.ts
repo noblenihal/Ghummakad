@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { SchemaType, type ResponseSchema } from '@google/generative-ai'
 
 // ── Vibe Search ────────────────────────────────────────────────────────────
 // Request the user sends, and the shape we require back from Gemini.
@@ -22,25 +23,26 @@ export const discoverResponseSchema = z.object({
 })
 export type DiscoverResponse = z.infer<typeof discoverResponseSchema>
 
-// Gemini responseSchema (JSON-Schema-ish subset the SDK accepts). Kept in sync
-// with `destinationSchema` above by the route's zod parse.
-export const discoverGeminiSchema = {
-  type: 'object',
+// Gemini responseSchema, typed with the SDK's SchemaType enum so it needs no
+// cast at the call site. Kept in sync with `destinationSchema` above by the
+// route's zod parse.
+export const discoverGeminiSchema: ResponseSchema = {
+  type: SchemaType.OBJECT,
   properties: {
     destinations: {
-      type: 'array',
+      type: SchemaType.ARRAY,
       items: {
-        type: 'object',
+        type: SchemaType.OBJECT,
         properties: {
-          name: { type: 'string' },
-          region: { type: 'string' },
-          hook: { type: 'string' },
-          whyItMatches: { type: 'string' },
-          bestMonths: { type: 'string' },
+          name: { type: SchemaType.STRING },
+          region: { type: SchemaType.STRING },
+          hook: { type: SchemaType.STRING },
+          whyItMatches: { type: SchemaType.STRING },
+          bestMonths: { type: SchemaType.STRING },
         },
         required: ['name', 'region', 'hook', 'whyItMatches', 'bestMonths'],
       },
     },
   },
   required: ['destinations'],
-} as const
+}

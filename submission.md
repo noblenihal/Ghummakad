@@ -49,7 +49,7 @@ Gemini isn't a feature in Ghummakad — it is the product. Five of its capabilit
 
 5. Native text-to-speech (gemini-2.5-flash-preview-tts) gives every local a warm accented voice and pronounces phrases like a native speaker.
 
-Real place photos stream live from Google Places/Wikipedia. Everything is generated at request time — nothing canned, nothing mocked.
+Place photos stream live from Google Places/Wikipedia. Everything is generated at request time — nothing canned or mocked.
 ```
 
 ---

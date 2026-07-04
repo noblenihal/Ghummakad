@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: theme('colors.parchment');
+  color: theme('colors.ink');
+}
+
+/* Always show a clear keyboard focus ring — accessibility baseline. */
+:focus-visible {
+  outline: 3px solid theme('colors.indigo');
+  outline-offset: 2px;
+}

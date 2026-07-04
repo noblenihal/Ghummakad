@@ -20,6 +20,7 @@ Live app: **http://168.144.24.204:8081** · Login: `nihalgupta11213@gmail.com` /
 | 7 | **First-person heritage story** | 🧪 | Tap a local's card → it expands with their personal story + a "Say it like a local" phrase (local script + transliteration + meaning). | |
 | 10 | **Real photos on destination cards** | 🧪 | Run a Vibe Search → each destination card should show a real photo (Wikipedia/Places), or a clean gradient if none exists. | |
 | 12 | **Live events strip** | 🧪 | "What's happening right now": enter a city → real festivals/events in the next 2 weeks, found via Google Search grounding. | |
+| 13 | **Chat with a local** | 🧪 | Expand a local's card → ask anything ("where do you actually eat?") → they answer in character. Off-topic questions (coding, politics…) get politely deflected back to travel. | |
 
 ## Building next
 

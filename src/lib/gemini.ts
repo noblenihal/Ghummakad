@@ -53,3 +53,17 @@ export async function generateJson(
   const result = await modelFor(responseSchema).generateContent(prompt)
   return result.response.text()
 }
+
+// Plain-text generation (used by the in-character chat, where prose beats JSON).
+let textModel: GenerativeModel | null = null
+
+export async function generateText(prompt: string): Promise<string> {
+  if (!textModel) {
+    textModel = genAI().getGenerativeModel({
+      model: MODEL,
+      generationConfig: { temperature: 0.9 },
+    })
+  }
+  const result = await textModel.generateContent(prompt)
+  return result.response.text()
+}

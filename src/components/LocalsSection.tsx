@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react'
 import type { LocalPersona, LocalsResponse } from '@/lib/features/locals'
+import LocalChat from '@/components/LocalChat'
 
 type Props = {
   getToken: () => Promise<string | null>
@@ -85,6 +86,8 @@ export default function LocalsSection({ getToken }: Props) {
               <LocalCard
                 key={local.id}
                 local={local}
+                city={result.city}
+                getToken={getToken}
                 open={openId === local.id}
                 onToggle={() => setOpenId((cur) => (cur === local.id ? null : local.id))}
               />
@@ -98,10 +101,14 @@ export default function LocalsSection({ getToken }: Props) {
 
 function LocalCard({
   local,
+  city,
+  getToken,
   open,
   onToggle,
 }: {
   local: LocalPersona
+  city: string
+  getToken: () => Promise<string | null>
   open: boolean
   onToggle: () => void
 }) {
@@ -141,6 +148,7 @@ function LocalCard({
             <p className="mt-1 text-sm italic text-ink/70">{local.phrase.translit}</p>
             <p className="mt-1 text-sm text-ink/60">“{local.phrase.english}”</p>
           </div>
+          <LocalChat city={city} local={local} getToken={getToken} />
         </div>
       )}
     </article>

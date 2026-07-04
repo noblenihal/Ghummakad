@@ -20,9 +20,6 @@ function genAI(): GoogleGenerativeAI {
 }
 
 const MODEL = 'gemini-2.5-flash'
-// Cap generation: our JSON payloads are small, so this trims latency and cost
-// without truncating valid responses.
-const MAX_OUTPUT_TOKENS = 1024
 
 // Reuse one configured model per response schema rather than rebuilding it on
 // every request. Schemas are module-level constants, so their identity is
@@ -38,7 +35,6 @@ function modelFor(responseSchema: ResponseSchema): GenerativeModel {
       responseMimeType: 'application/json',
       responseSchema,
       temperature: 0.9,
-      maxOutputTokens: MAX_OUTPUT_TOKENS,
     },
   })
   modelCache.set(responseSchema, model)

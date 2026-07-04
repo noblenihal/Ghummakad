@@ -1,9 +1,11 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function LandingPage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-6 py-16">
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-henna">घुमक्कड़</p>
+      <Image src="/logo.png" alt="Ghummakad logo" width={96} height={96} priority className="mb-4 rounded-2xl" />
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-henna">घुमक्कड़ · Travel &amp; Explore</p>
       <h1 className="mt-3 font-display text-5xl font-bold leading-tight text-ink sm:text-6xl">
         Ghummakad
       </h1>

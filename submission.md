@@ -25,11 +25,16 @@ Test login: `nihalgupta11213@gmail.com` / `hello1234` (or sign up — it's insta
 ## Describe the changes/updates made in the deployed version
 
 ```
-Every travel app answers "where should I go?" with the same top-10 list. Ghummakad answers a different question: what do you want to feel? This version ships that full experience, working end-to-end.
+Ghummakad is a GenAI travel companion: describe the feeling you're chasing ("misty hills, monasteries, quiet") and it finds real destinations, introduces you to the city's people, and helps you live the place — not just see it.
 
-Describe a feeling — "misty hills, monasteries, quiet" — and three real destinations appear, with real photos and why each fits YOU. Enter any city and meet its people: an elder artisan, a market seller, a young guide — each telling their own heritage story aloud in a warm accented voice, and teaching you a phrase pronounced like a native. Ask them anything — where they actually eat, what's worth skipping — and they answer in character. Upload a photo of a monument and it tells you its story, a fun fact, and the hidden gem nearby. Pick the experiences you love and they're woven into a day plan built around the city's real weather and sunset. Then see what's actually happening in town these two weeks — real events, not guesses.
+Added in this version:
+• Meet the Locals — every city generates local characters (an elder artisan, a market seller, a young guide) telling first-person heritage stories, narrated aloud in warm accented voices, plus a local phrase pronounced like a native.
+• Chat with a Local — ask anything; they answer in character, scoped to travel & culture.
+• Photo Lens — upload a monument photo; it's identified, with its story, a fun fact, and a nearby hidden gem.
+• Weave Your Day — pick experiences → a day plan adapted to the city's live weather, sunrise, sunset.
+• Live events (next 2 weeks) and real photos on every destination card.
 
-Discovery → people → stories → a lived day: the entire challenge brief in one flow.
+Improved: full visual redesign (cycling-vibe landing, boarding-pass login, richer card layouts), faster repeat searches via caching, 93-test suite.
 ```
 
 ---

@@ -27,7 +27,7 @@ Test login: `nihalgupta11213@gmail.com` / `hello1234` (or sign up — it's insta
 ```
 Ghummakad reimagines destination discovery: instead of a ranked list of tourist spots, you feel a place and meet the culture behind it. All live in the deployed app:
 
-1. Vibe Search — describe the trip you're craving ("misty hills, monasteries, total quiet") → three real destinations matching the mood, with a hook, why it fits you, best months, and a real photo.
+1. Vibe Search — describe the trip you're craving ("misty hills, monasteries, quiet") → three real destinations matching the mood, with a hook, why it fits, best months, and a real photo.
 
 2. Meet the Locals — any city introduces you to local characters. Each tells their first-person heritage story — narrated in a natural accented voice — and teaches a local phrase you can hear pronounced.
 

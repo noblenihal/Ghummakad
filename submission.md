@@ -48,7 +48,7 @@ Gemini isn't a feature in Ghummakad — it is the product. Five of its capabilit
 
 2. In-character chat lets you actually talk to those locals — dynamic answers to any question, guardrailed to travel and culture, never inventing places.
 
-3. Vision (multimodal) reads your monument photo: identifies it, tells its story, a fun fact, and the hidden gem nearby.
+3. Vision reads your monument photo: identifies it, tells its story, a fun fact, and the hidden gem nearby.
 
 4. Google Search grounding pulls real, current events for any city — verifiable, never hallucinated.
 

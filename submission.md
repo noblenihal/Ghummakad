@@ -25,19 +25,11 @@ Test login: `nihalgupta11213@gmail.com` / `hello1234` (or sign up — it's insta
 ## Describe the changes/updates made in the deployed version
 
 ```
-Ghummakad reimagines destination discovery: instead of a ranked list of tourist spots, you feel a place and meet the culture behind it. All live in the deployed app:
+Every travel app answers "where should I go?" with the same top-10 list. Ghummakad answers a different question: what do you want to feel? This version ships that full experience, working end-to-end.
 
-1. Vibe Search — describe the trip you're craving ("misty hills, monasteries, quiet") → three real destinations matching the mood, with a hook, why it fits, best months, and a real photo.
+Describe a feeling — "misty hills, monasteries, quiet" — and three real destinations appear, with real photos and why each fits YOU. Enter any city and meet its people: an elder artisan, a market seller, a young guide — each telling their own heritage story aloud in a warm accented voice, and teaching you a phrase pronounced like a native. Ask them anything — where they actually eat, what's worth skipping — and they answer in character. Upload a photo of a monument and it tells you its story, a fun fact, and the hidden gem nearby. Pick the experiences you love and they're woven into a day plan built around the city's real weather and sunset. Then see what's actually happening in town these two weeks — real events, not guesses.
 
-2. Meet the Locals — any city introduces you to local characters. Each tells their first-person heritage story — narrated in a natural accented voice — and teaches a local phrase you can hear pronounced.
-
-3. Chat with a Local — ask anything; they answer in character, warmly scoped to travel and culture.
-
-4. Photo Lens — upload a photo of any monument; it's identified and its story, a fun fact, and a nearby hidden gem come back.
-
-5. Weave Your Day — pick experiences you love; they're woven into a day plan adapted to the city's real weather, sunrise and sunset.
-
-6. What's Happening Right Now — real events in the next two weeks via Google Search grounding.
+Discovery → people → stories → a lived day: the entire challenge brief in one flow.
 ```
 
 ---
@@ -45,19 +37,19 @@ Ghummakad reimagines destination discovery: instead of a ranked list of tourist 
 ## Mention the Gen AI services utilized in the submission, and where did you utilize it?
 
 ```
-Ghummakad uses five distinct Gemini capabilities:
+Gemini isn't a feature in Ghummakad — it is the product. Five of its capabilities work together:
 
-1. Text + structured output (gemini-2.5-flash) — Vibe Search destination matching, local characters & their heritage stories, and weather-adaptive day plans (live Open-Meteo weather fed into the prompt).
+1. Structured text (gemini-2.5-flash) turns a traveller's mood into real matched destinations, invents each city's authentic local characters and their first-person heritage stories, and weaves chosen experiences into a day plan adapted to live weather (Open-Meteo fed into the prompt).
 
-2. In-character chat — fully dynamic conversations with each local, guardrailed to travel/culture topics, no fabricated places.
+2. In-character chat lets you actually talk to those locals — dynamic answers to any question, guardrailed to travel and culture, never inventing places.
 
-3. Vision (multimodal) — Photo Lens: upload a monument photo, Gemini identifies it and tells its story, a fun fact, and a nearby hidden gem.
+3. Vision (multimodal) reads your monument photo: identifies it, tells its story, a fun fact, and the hidden gem nearby.
 
-4. Google Search grounding — real, current cultural events for any city, verifiable rather than hallucinated.
+4. Google Search grounding pulls real, current events for any city — verifiable, never hallucinated.
 
-5. Native text-to-speech (gemini-2.5-flash-preview-tts) — stories narrated in warm accented voices and local phrases pronounced like a native speaker.
+5. Native text-to-speech (gemini-2.5-flash-preview-tts) gives every local a warm accented voice and pronounces phrases like a native speaker.
 
-Plus live place photos from Google Places / Wikipedia APIs. Every response is generated live per request. Nothing canned, nothing mocked.
+Real place photos stream live from Google Places/Wikipedia. Everything is generated at request time — nothing canned, nothing mocked.
 ```
 
 ---

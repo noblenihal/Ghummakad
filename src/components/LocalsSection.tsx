@@ -41,8 +41,11 @@ export default function LocalsSection({ getToken }: Props) {
   }
 
   return (
-    <section className="mt-12">
-      <h2 className="font-display text-2xl font-bold text-ink">Meet the locals</h2>
+    <section className="py-10">
+      <p className="font-mono text-[11px] uppercase tracking-widest text-henna">
+        Ticket 02 · Meet the locals
+      </p>
+      <h2 className="mt-1 font-display text-3xl font-bold text-ink">Meet the locals</h2>
       <p className="mt-2 text-ink/70">
         Name a city and be introduced to the kind of people who carry its stories.
       </p>
@@ -83,12 +86,13 @@ export default function LocalsSection({ getToken }: Props) {
         {result && (
           <>
             <p className="text-sm text-ink/50">Your cast in {result.city} — tap someone to hear their story.</p>
-            {result.locals.map((local) => (
+            {result.locals.map((local, index) => (
               <LocalCard
                 key={local.id}
                 local={local}
                 city={result.city}
                 getToken={getToken}
+                index={index}
                 open={openId === local.id}
                 onToggle={() => setOpenId((cur) => (cur === local.id ? null : local.id))}
               />
@@ -100,38 +104,54 @@ export default function LocalsSection({ getToken }: Props) {
   )
 }
 
+// Rotating accents (static class strings so Tailwind can see them).
+const DEFAULT_ACCENT = { bar: 'bg-marigold', medallion: 'from-marigold/80 to-henna/60' }
+const ACCENTS = [
+  DEFAULT_ACCENT,
+  { bar: 'bg-henna', medallion: 'from-henna/80 to-indigo/60' },
+  { bar: 'bg-indigo', medallion: 'from-indigo/80 to-night/70' },
+]
+
 function LocalCard({
   local,
   city,
   getToken,
+  index,
   open,
   onToggle,
 }: {
   local: LocalPersona
   city: string
   getToken: () => Promise<string | null>
+  index: number
   open: boolean
   onToggle: () => void
 }) {
+  const accent = ACCENTS[index % ACCENTS.length] ?? DEFAULT_ACCENT
   return (
-    <article className="rounded-2xl border border-ink/10 bg-white shadow-sm">
+    <article className="relative overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-sm">
+      <span aria-hidden="true" className={`absolute inset-y-0 left-0 w-1.5 ${accent.bar}`} />
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={open}
-        className="flex w-full items-center gap-4 rounded-2xl p-5 text-left transition hover:bg-marigold/5"
+        className="flex w-full items-center gap-4 rounded-2xl p-4 pl-5 text-left transition hover:bg-marigold/5"
       >
-        <span aria-hidden="true" className="text-4xl">
+        <span
+          aria-hidden="true"
+          className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-3xl ${accent.medallion}`}
+        >
           {local.emoji}
         </span>
         <span className="min-w-0 flex-1">
-          <span className="flex flex-wrap items-baseline gap-x-2">
-            <span className="font-display text-lg font-bold text-ink">{local.name}</span>
-            <span className="text-sm text-ink/50">
-              {local.age} · {local.trade}
-            </span>
+          <span className="block font-mono text-[11px] uppercase tracking-widest text-henna">
+            Local · {local.trade}
           </span>
-          <span className="mt-1 block italic text-henna">{local.greeting}</span>
+          <span className="mt-0.5 flex flex-wrap items-baseline gap-x-2">
+            <span className="font-display text-lg font-bold text-ink">{local.name}</span>
+            <span className="text-sm text-ink/50">{local.age}</span>
+          </span>
+          <span className="mt-0.5 block italic text-henna">{local.greeting}</span>
         </span>
         <span aria-hidden="true" className="text-ink/40">
           {open ? '−' : '+'}
@@ -140,12 +160,14 @@ function LocalCard({
 
       {open && (
         <div className="border-t border-ink/10 px-5 pb-5 pt-4">
-          <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start justify-between gap-3 rounded-xl border border-ink/10 bg-parchment/70 p-4">
             <p className="whitespace-pre-line text-ink/80">{local.story}</p>
             <SpeakButton
               text={`${local.greeting} ${local.story}`}
+              kind="story"
               lang="en-IN"
               label={`Listen to ${local.name}'s story`}
+              getToken={getToken}
               className="shrink-0"
             />
           </div>
@@ -156,8 +178,10 @@ function LocalCard({
               </p>
               <SpeakButton
                 text={local.phrase.local}
+                kind="phrase"
                 lang="hi-IN"
                 label={`Hear the phrase ${local.phrase.translit}`}
+                getToken={getToken}
               />
             </div>
             <p className="mt-2 text-lg text-ink">{local.phrase.local}</p>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
+import PlacePhoto from '@/components/PlacePhoto'
 
 interface ExperienceItem {
   id: string
@@ -119,8 +120,11 @@ export default function DayWeaverSection({ getToken }: DayWeaverSectionProps) {
   const weatherSummary = weather ? weatherLine(weather) : null
 
   return (
-    <section aria-labelledby="dayweaver-heading">
-      <h2 id="dayweaver-heading" className="font-display text-3xl font-bold text-ink">
+    <section aria-labelledby="dayweaver-heading" className="py-10">
+      <p className="font-mono text-[11px] uppercase tracking-widest text-henna">
+        Ticket 03 · Day weaver
+      </p>
+      <h2 id="dayweaver-heading" className="mt-1 font-display text-3xl font-bold text-ink">
         Weave your day
       </h2>
       <p className="mt-2 text-ink/70">
@@ -160,24 +164,31 @@ export default function DayWeaverSection({ getToken }: DayWeaverSectionProps) {
       <div aria-live="polite" className="mt-8">
         {experiences && (
           <>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
               {experiences.map((ex) => {
                 const selected = picked.has(ex.id)
                 return (
                   <article
                     key={ex.id}
-                    className={`rounded-2xl border bg-white p-5 shadow-sm transition ${
+                    className={`overflow-hidden rounded-2xl border bg-white shadow-sm transition ${
                       selected ? 'border-indigo ring-2 ring-indigo/40' : 'border-ink/10'
                     }`}
                   >
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="font-display text-lg font-bold text-ink">{ex.name}</h3>
+                    <div className="relative">
+                      {/* Comma matters: the photo resolver's Wikipedia retry
+                          strips everything after the first comma, falling back
+                          to the bare place name. */}
+                      <PlacePhoto
+                        query={`${ex.name}, ${searchedCity}`}
+                        alt={`Photo of ${ex.name}`}
+                        className="h-28 w-full"
+                      />
                       <button
                         type="button"
                         aria-pressed={selected}
                         aria-label={`Add ${ex.name} to my day`}
                         onClick={() => togglePick(ex.id)}
-                        className={`shrink-0 rounded-full border px-3 py-1 text-lg transition ${
+                        className={`absolute right-2 top-2 shrink-0 rounded-full border px-3 py-1 text-lg shadow-sm transition ${
                           selected
                             ? 'border-indigo bg-indigo text-white'
                             : 'border-ink/20 bg-white text-ink/50 hover:text-henna'
@@ -186,14 +197,14 @@ export default function DayWeaverSection({ getToken }: DayWeaverSectionProps) {
                         {selected ? '♥' : '♡'}
                       </button>
                     </div>
-                    <p className="mt-2 text-ink/80">{ex.hook}</p>
-                    <div className="mt-3 flex flex-wrap items-center gap-2">
-                      <span className="text-sm font-semibold text-henna">
-                        Best at {ex.bestTime}
-                      </span>
-                      <span className="rounded-full bg-marigold/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink/70">
-                        {ex.category}
-                      </span>
+                    <div className="p-4">
+                      <p className="font-mono text-[11px] uppercase tracking-widest text-henna">
+                        {ex.category} · best at {ex.bestTime}
+                      </p>
+                      <h3 className="mt-1 font-display text-lg font-bold leading-snug text-ink">
+                        {ex.name}
+                      </h3>
+                      <p className="mt-1 text-sm text-ink/80">{ex.hook}</p>
                     </div>
                   </article>
                 )
@@ -224,19 +235,26 @@ export default function DayWeaverSection({ getToken }: DayWeaverSectionProps) {
               <p className="mt-1 text-sm font-semibold text-henna">{weatherSummary}</p>
             )}
             <p className="mt-3 text-ink/80">{plan.intro}</p>
-            <ol className="mt-5 space-y-5">
+            <ol className="mt-5">
               {plan.stops.map((stop, i) => (
-                <li key={`${stop.name}-${i}`} className="flex gap-4">
+                <li key={`${stop.name}-${i}`} className="relative flex gap-4 pb-6 last:pb-0">
+                  {i < plan.stops.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute bottom-0 left-4 top-9 w-px bg-henna/40"
+                    />
+                  )}
                   <span
                     aria-hidden="true"
-                    className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo font-semibold text-white"
+                    className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo font-mono text-sm font-semibold text-white"
                   >
                     {i + 1}
                   </span>
-                  <div>
-                    <h4 className="font-display font-bold text-ink">
-                      <span className="text-henna">{stop.when}</span> · {stop.name}
-                    </h4>
+                  <div className="min-w-0">
+                    <p className="font-mono text-[11px] uppercase tracking-widest text-henna">
+                      Stop {String(i + 1).padStart(2, '0')} · {stop.when}
+                    </p>
+                    <h4 className="mt-0.5 font-display font-bold text-ink">{stop.name}</h4>
                     <p className="mt-1 text-ink/80">{stop.why}</p>
                     <p className="mt-1 text-sm text-ink/60">Tip: {stop.tip}</p>
                   </div>

@@ -16,3 +16,73 @@ body {
   outline: 3px solid theme('colors.indigo');
   outline-offset: 2px;
 }
+
+/* Hero vibe line: warm light shifting through marigold → henna → indigo. */
+.vibe-gradient {
+  background: linear-gradient(
+    90deg,
+    theme('colors.marigold'),
+    theme('colors.henna'),
+    theme('colors.indigo'),
+    theme('colors.marigold')
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: vibe-shift 14s linear infinite;
+}
+
+@keyframes vibe-shift {
+  to {
+    background-position: 300% 0;
+  }
+}
+
+/* Boarding-pass perforation: punched dots along the card's left edge. */
+.perforated {
+  background-image: radial-gradient(circle, theme('colors.parchment') 3px, transparent 3.5px);
+  background-size: 8px 18px;
+  background-repeat: repeat-y;
+  background-position: -4px 6px;
+}
+
+/* Postmark ring around the logo. */
+.postmark {
+  border: 2px dashed theme('colors.henna' / 45%);
+  border-radius: 9999px;
+  transition: transform 0.6s ease;
+}
+.postmark:hover {
+  transform: rotate(8deg);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise-in {
+  animation: rise-in 0.7s ease-out both;
+}
+.rise-in-delayed {
+  animation: rise-in 0.7s ease-out 0.25s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vibe-gradient {
+    animation: none;
+  }
+  .rise-in,
+  .rise-in-delayed {
+    animation: none;
+  }
+  .postmark:hover {
+    transform: none;
+  }
+}

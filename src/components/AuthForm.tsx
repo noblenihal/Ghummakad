@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { supabaseBrowser } from '@/lib/supabase/browser'
 
 type Mode = 'login' | 'signup'
@@ -64,66 +65,99 @@ export default function AuthForm({ mode }: { mode: Mode }) {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6 py-16">
-      <Link href="/" className="font-display text-sm uppercase tracking-[0.3em] text-henna">
-        Ghummakad
-      </Link>
-      <h1 className="mt-3 font-display text-3xl font-bold text-ink">{copy.title}</h1>
+    <main className="relative mx-auto flex min-h-screen max-w-md flex-col justify-center overflow-hidden px-6 py-16">
+      {/* Watermark echo of the landing page. */}
+      <p
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-10 top-8 select-none font-hindi text-[7rem] leading-none text-henna/[0.07]"
+      >
+        घुमक्कड़
+      </p>
 
-      <form onSubmit={onSubmit} className="mt-8 space-y-5" noValidate>
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-ink">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-ink"
-          />
-        </div>
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-ink">
-            Password
-          </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
-            required
-            minLength={6}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-ink"
-          />
-        </div>
+      {/* Boarding pass */}
+      <div className="perforated relative rounded-2xl border border-ink/15 bg-white pl-4 shadow-sm">
+        <div className="p-7">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-ink/40">
+                Ghummakad · boarding pass
+              </p>
+              <h1 className="mt-2 font-display text-3xl font-bold text-ink">{copy.title}</h1>
+            </div>
+            <Link href="/" aria-label="Back to the Ghummakad home page" className="postmark inline-flex shrink-0 p-1">
+              <Image src="/logo.png" alt="" width={44} height={44} className="rounded-full" />
+            </Link>
+          </div>
 
-        {error && (
-          <p role="alert" className="rounded-lg bg-henna/10 px-3 py-2 text-sm text-henna">
-            {error}
+          <form onSubmit={onSubmit} className="mt-6 space-y-5" noValidate>
+            <div>
+              <label
+                htmlFor="email"
+                className="block font-mono text-[11px] uppercase tracking-widest text-ink/50"
+              >
+                Traveller · email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@email.com"
+                className="mt-1.5 w-full rounded-lg border border-ink/20 bg-parchment/50 px-3 py-2.5 text-ink placeholder:text-ink/30"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="password"
+                className="block font-mono text-[11px] uppercase tracking-widest text-ink/50"
+              >
+                Secret · password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
+                required
+                minLength={6}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                className="mt-1.5 w-full rounded-lg border border-ink/20 bg-parchment/50 px-3 py-2.5 text-ink placeholder:text-ink/30"
+              />
+            </div>
+
+            {error && (
+              <p role="alert" className="rounded-lg bg-henna/10 px-3 py-2 text-sm text-henna">
+                {error}
+              </p>
+            )}
+            {notice && (
+              <p role="status" className="rounded-lg bg-indigo/10 px-3 py-2 text-sm text-indigo">
+                {notice}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={busy}
+              className="w-full rounded-full bg-marigold px-6 py-3 font-semibold text-ink transition hover:bg-marigold/90 disabled:opacity-60"
+            >
+              {busy ? 'Please wait…' : copy.cta}
+            </button>
+          </form>
+
+          <p className="mt-6 border-t border-dashed border-ink/15 pt-4 text-center font-hindi text-lg text-henna/80">
+            पधारो म्हारे देस
+            <span className="ml-2 font-body text-xs text-ink/40">— welcome to my land</span>
           </p>
-        )}
-        {notice && (
-          <p role="status" className="rounded-lg bg-indigo/10 px-3 py-2 text-sm text-indigo">
-            {notice}
-          </p>
-        )}
+        </div>
+      </div>
 
-        <button
-          type="submit"
-          disabled={busy}
-          className="w-full rounded-full bg-marigold px-6 py-3 font-semibold text-ink transition hover:bg-marigold/90 disabled:opacity-60"
-        >
-          {busy ? 'Please wait…' : copy.cta}
-        </button>
-      </form>
-
-      <p className="mt-6 text-sm text-ink/70">
+      <p className="mt-6 text-center text-sm text-ink/70">
         {copy.alt}{' '}
         <Link href={copy.altHref} className="font-semibold text-indigo underline">
           {copy.altLabel}

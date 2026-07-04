@@ -21,9 +21,18 @@ Live app: **http://168.144.24.204:8081** · Login: `nihalgupta11213@gmail.com` /
 | 10 | **Real photos on destination cards** | 🧪 | Run a Vibe Search → each destination card should show a real photo (Wikipedia/Places), or a clean gradient if none exists. | |
 | 12 | **Live events strip** | 🧪 | "What's happening right now": enter a city → real festivals/events in the next 2 weeks, found via Google Search grounding. | |
 | 13 | **Chat with a local** | 🧪 | Expand a local's card → ask anything ("where do you actually eat?") → they answer in character. Off-topic questions (coding, politics…) get politely deflected back to travel. | |
-| 8 | **Story narration (audio)** | 🧪 | Expand a local's card → "Listen" button next to the story → the local's greeting + story read aloud. Press again to stop. | |
-| 9 | **Phrase audio** | 🧪 | In "Say it like a local" → "Listen" → hear the phrase pronounced. | |
+| 8 | **Story narration — real voices** | 🧪 | Expand a local's card → "Listen" → the story read in a natural accented voice (Gemini native TTS; falls back to browser speech if unavailable). | |
+| 9 | **Phrase audio — native pronunciation** | 🧪 | In "Say it like a local" → "Listen" → the phrase spoken as a native speaker (Gemini TTS). | |
 | 11 | **Weave your day (itinerary)** | 🧪 | Enter a city → pick experiences with ♥ → "Weave my day" → a narrated day plan adapted to today's real weather/sunrise/sunset. | |
+| 14 | **Photo Lens (Gemini Vision)** | 🧪 | "Point at a monument": upload a photo of a landmark → identified + its story, fun fact, best time, and a nearby hidden gem. | |
+| 15 | **Entry-page redesign** | 🧪 | Landing: cycling "vibe" hero line, घुमक्कड़ watermark, stamp row. Login/signup: boarding-pass card with perforated edge. | |
+| 16 | **Richer in-app visuals** | 🧪 | Ticket eyebrows per section, card grids, photos on experience cards, persona medallions, itinerary timeline — much less white space. | |
+
+## Roadmap (next version)
+
+| # | Feature | Notes |
+|---|---------|-------|
+| 17 | **Sound of the place** — 10–20s of place-inspired music (Google Lyria) | Every cultural place has a different sound; play it with the city's page. |
 
 ## Under the hood (done, affects the score)
 

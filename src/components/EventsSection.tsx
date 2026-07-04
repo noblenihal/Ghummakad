@@ -43,8 +43,11 @@ export default function EventsSection({ getToken }: EventsSectionProps) {
   }
 
   return (
-    <section aria-labelledby="events-heading">
-      <h2 id="events-heading" className="font-display text-3xl font-bold text-ink">
+    <section aria-labelledby="events-heading" className="py-10">
+      <p className="font-mono text-[11px] uppercase tracking-widest text-henna">
+        Ticket 04 · Live events
+      </p>
+      <h2 id="events-heading" className="mt-1 font-display text-3xl font-bold text-ink">
         What&apos;s happening right now
       </h2>
       <p className="mt-2 text-ink/70">
@@ -81,23 +84,28 @@ export default function EventsSection({ getToken }: EventsSectionProps) {
         </p>
       )}
 
-      <div aria-live="polite" className="mt-8 space-y-4">
+      <div aria-live="polite" className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {events !== null && events.length === 0 && (
-          <p className="text-ink/60">
+          <p className="text-ink/60 sm:col-span-2">
             Nothing verifiable found for the next two weeks — try a bigger city nearby.
           </p>
         )}
         {events?.map((ev) => (
           <article
             key={`${ev.name}-${ev.when}`}
-            className="rounded-2xl border border-ink/10 bg-white p-5 shadow-sm"
+            className="rounded-2xl border border-dashed border-ink/25 bg-white p-4 shadow-sm"
           >
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="font-display text-lg font-bold text-ink">{ev.name}</h3>
-              <span className="text-sm font-semibold text-henna">{ev.when}</span>
+            <div className="flex items-start justify-between gap-3">
+              <h3 className="font-display text-lg font-bold leading-snug text-ink">{ev.name}</h3>
+              <span className="shrink-0 rounded border border-dashed border-henna/50 bg-henna/5 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-henna">
+                {ev.when}
+              </span>
             </div>
-            <p className="mt-1 text-sm text-ink/50">{ev.venue}</p>
-            <p className="mt-2 text-ink/80">{ev.blurb}</p>
+            <p className="mt-2 text-sm text-ink/60">
+              <span aria-hidden="true">📍 </span>
+              {ev.venue}
+            </p>
+            <p className="mt-2 text-sm text-ink/80">{ev.blurb}</p>
           </article>
         ))}
       </div>

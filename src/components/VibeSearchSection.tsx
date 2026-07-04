@@ -38,8 +38,11 @@ export default function VibeSearchSection({ getToken }: VibeSearchSectionProps) 
   }
 
   return (
-    <section aria-labelledby="vibe-heading">
-      <h2 id="vibe-heading" className="font-display text-3xl font-bold text-ink">
+    <section aria-labelledby="vibe-heading" className="py-10">
+      <p className="font-mono text-[11px] uppercase tracking-widest text-henna">
+        Ticket 01 · Vibe search
+      </p>
+      <h2 id="vibe-heading" className="mt-1 font-display text-3xl font-bold text-ink">
         What kind of trip are you chasing?
       </h2>
       <p className="mt-2 text-ink/70">
@@ -76,28 +79,36 @@ export default function VibeSearchSection({ getToken }: VibeSearchSectionProps) 
         </p>
       )}
 
-      <div aria-live="polite" className="mt-8 space-y-4">
+      <div aria-live="polite" className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {results?.map((d) => (
           <article
             key={`${d.name}-${d.region}`}
             className="overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-sm"
           >
-            {/* Comma matters: the photo resolver's Wikipedia retry strips
-                everything after the first comma, falling back to the bare
-                place name (e.g. "Hawa Mahal, Jaipur" → "Hawa Mahal"). */}
-            <PlacePhoto
-              query={`${d.name}, ${d.region}`}
-              alt={`Photo of ${d.name}`}
-              className="h-44 w-full"
-            />
-            <div className="p-5">
-            <div className="flex items-baseline justify-between gap-3">
-              <h3 className="font-display text-xl font-bold text-ink">{d.name}</h3>
-              <span className="text-sm text-ink/50">{d.region}</span>
+            <div className="relative">
+              {/* Comma matters: the photo resolver's Wikipedia retry strips
+                  everything after the first comma, falling back to the bare
+                  place name (e.g. "Hawa Mahal, Jaipur" → "Hawa Mahal"). */}
+              <PlacePhoto
+                query={`${d.name}, ${d.region}`}
+                alt={`Photo of ${d.name}`}
+                className="h-40 w-full"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-ink/80 to-transparent"
+              />
+              <span className="absolute bottom-2 left-3 font-mono text-[11px] uppercase tracking-widest text-parchment">
+                {d.region}
+              </span>
             </div>
-            <p className="mt-1 italic text-henna">{d.hook}</p>
-            <p className="mt-3 text-ink/80">{d.whyItMatches}</p>
-            <p className="mt-3 text-sm text-ink/50">Best months: {d.bestMonths}</p>
+            <div className="p-4">
+              <h3 className="font-display text-xl font-bold text-ink">{d.name}</h3>
+              <p className="mt-1 italic text-henna">{d.hook}</p>
+              <p className="mt-2 text-sm text-ink/80">{d.whyItMatches}</p>
+              <p className="mt-3 inline-block rounded border border-dashed border-ink/25 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-ink/60">
+                Best months · {d.bestMonths}
+              </p>
             </div>
           </article>
         ))}

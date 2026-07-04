@@ -8,6 +8,7 @@ import VibeSearchSection from '@/components/VibeSearchSection'
 import LocalsSection from '@/components/LocalsSection'
 import EventsSection from '@/components/EventsSection'
 import DayWeaverSection from '@/components/DayWeaverSection'
+import PhotoLensSection from '@/components/PhotoLensSection'
 
 type Status = 'checking' | 'ready'
 
@@ -64,9 +65,10 @@ export default function AppPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-3xl space-y-16 px-6 py-10">
+      <main className="mx-auto max-w-4xl divide-y divide-ink/10 px-6">
         <VibeSearchSection getToken={getToken} />
         <LocalsSection getToken={getToken} />
+        <PhotoLensSection getToken={getToken} />
         <DayWeaverSection getToken={getToken} />
         <EventsSection getToken={getToken} />
       </main>

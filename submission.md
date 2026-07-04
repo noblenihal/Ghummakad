@@ -27,15 +27,17 @@ Test login: `nihalgupta11213@gmail.com` / `hello1234` (or sign up — it's insta
 ```
 Ghummakad reimagines destination discovery: instead of a ranked list of tourist spots, you feel a place and meet the culture behind it. All live in the deployed app:
 
-1. Vibe Search — describe the trip you're craving ("misty hills, monasteries, total quiet") → three real destinations matching the mood, each with a hook, why it fits you, best months, and a real photo fetched live.
+1. Vibe Search — describe the trip you're craving ("misty hills, monasteries, total quiet") → three real destinations matching the mood, with a hook, why it fits you, best months, and a real photo.
 
-2. Meet the Locals — enter any city and get introduced to local characters (an elder artisan, a market seller, a young guide). Each tells their first-person heritage story — with audio narration — and teaches you a local phrase you can hear spoken aloud.
+2. Meet the Locals — any city introduces you to local characters. Each tells their first-person heritage story — narrated in a natural accented voice — and teaches a local phrase you can hear pronounced.
 
-3. Chat with a Local — ask them anything, they answer in character; conversations stay warmly scoped to travel and culture.
+3. Chat with a Local — ask anything; they answer in character, warmly scoped to travel and culture.
 
-4. Weave Your Day — pick the experiences you love; Ghummakad weaves them into a day plan adapted to the city's real weather, sunrise and sunset.
+4. Photo Lens — upload a photo of any monument; it's identified and its story, a fun fact, and a nearby hidden gem come back.
 
-5. What's Happening Right Now — real events in the next two weeks via Google Search grounding.
+5. Weave Your Day — pick experiences you love; they're woven into a day plan adapted to the city's real weather, sunrise and sunset.
+
+6. What's Happening Right Now — real events in the next two weeks via Google Search grounding.
 ```
 
 ---
@@ -43,21 +45,19 @@ Ghummakad reimagines destination discovery: instead of a ranked list of tourist 
 ## Mention the Gen AI services utilized in the submission, and where did you utilize it?
 
 ```
-Google Gemini (gemini-2.5-flash) powers every intelligent feature in Ghummakad:
+Ghummakad uses five distinct Gemini capabilities:
 
-1. Vibe Search — Gemini reads the mood behind a free-text "vibe" and recommends real destinations matched to that feeling.
+1. Text + structured output (gemini-2.5-flash) — Vibe Search destination matching, local characters & their heritage stories, and weather-adaptive day plans (live Open-Meteo weather fed into the prompt).
 
-2. Meet the Locals — Gemini creates an authentic cast of locals for any city, writes each one's first-person heritage story grounded in real places and traditions, plus a genuine local phrase with transliteration.
+2. In-character chat — fully dynamic conversations with each local, guardrailed to travel/culture topics, no fabricated places.
 
-3. Chat with a Local — a fully dynamic, in-character conversation, guardrailed to travel/culture topics only, no fabricated places.
+3. Vision (multimodal) — Photo Lens: upload a monument photo, Gemini identifies it and tells its story, a fun fact, and a nearby hidden gem.
 
-4. Weave Your Day — Gemini composes chosen experiences into a narrated day plan, adapting to live weather, sunrise and sunset (Open-Meteo).
+4. Google Search grounding — real, current cultural events for any city, verifiable rather than hallucinated.
 
-5. Live events — Gemini with Google Search grounding surfaces real, current events — verifiable, not hallucinated.
+5. Native text-to-speech (gemini-2.5-flash-preview-tts) — stories narrated in warm accented voices and local phrases pronounced like a native speaker.
 
-6. Real place photos — fetched live from Google Places / Wikipedia APIs.
-
-Every response is generated live per request. Nothing canned, nothing mocked.
+Plus live place photos from Google Places / Wikipedia APIs. Every response is generated live per request. Nothing canned, nothing mocked.
 ```
 
 ---

@@ -1,5 +1,25 @@
 import type { Metadata, Viewport } from 'next'
+import { Fraunces, Karla, IBM_Plex_Mono, Tiro_Devanagari_Hindi } from 'next/font/google'
 import './globals.css'
+
+// Self-hosted at build time by next/font — no runtime font CDN.
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  axes: ['SOFT', 'WONK', 'opsz'],
+  variable: '--font-display',
+})
+const karla = Karla({ subsets: ['latin'], variable: '--font-body' })
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono',
+})
+const tiroDevanagari = Tiro_Devanagari_Hindi({
+  subsets: ['devanagari'],
+  weight: '400',
+  variable: '--font-hindi',
+})
 
 export const metadata: Metadata = {
   title: 'Ghummakad — Travel & Explore',
@@ -24,8 +44,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen antialiased">{children}</body>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${karla.variable} ${plexMono.variable} ${tiroDevanagari.variable}`}
+    >
+      <body className="min-h-screen font-body antialiased">{children}</body>
     </html>
   )
 }

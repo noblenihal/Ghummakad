@@ -15,19 +15,19 @@ Live app: **http://168.144.24.204:8081** · Login: `nihalgupta11213@gmail.com` /
 | 2 | **Auth gating** | ✅ | Open `/app` in a private window (logged out) → should bounce you to `/login`. | |
 | 3 | **Vibe Search** | ✅ | In the workspace, type a mood ("misty hills, monasteries, hot food, quiet") → 3 real destinations with a hook + reason + best months. | |
 | 4 | **Sign out** | ✅ | Click sign out → returns to landing; `/app` locked again. | |
+| 5 | **Ghummakad branding** (logo + favicon) | 🧪 | Logo on landing + workspace header, favicon in the browser tab. | |
+| 6 | **Meet the Locals** | 🧪 | In the workspace, "Meet the locals": enter a city (Jaipur) → "Introduce me" → 3 local characters with emoji avatars, name/age/trade, greeting. | |
+| 7 | **First-person heritage story** | 🧪 | Tap a local's card → it expands with their personal story + a "Say it like a local" phrase (local script + transliteration + meaning). | |
+| 10 | **Real photos on destination cards** | 🧪 | Run a Vibe Search → each destination card should show a real photo (Wikipedia/Places), or a clean gradient if none exists. | |
+| 12 | **Live events strip** | 🧪 | "What's happening right now": enter a city → real festivals/events in the next 2 weeks, found via Google Search grounding. | |
 
-## Building next — the "Meet the Locals" experience
+## Building next
 
 | # | Feature | Status | What it does | Needs testing when done |
 |---|---------|--------|--------------|--------------------------|
-| 5 | **Ghummakad branding** (logo + favicon) | 🔨 | New logo on landing/auth, favicon in the tab. | Tab icon + logo render |
-| 6 | **Meet the Locals** | ⬜ | Enter a city → a cast of local characters (elder, artisan, young guide), generated live. | Faces/cards load, feel real |
-| 7 | **First-person heritage story** | ⬜ | Tap a local → they tell their story in their own voice. | Story is vivid, on-topic |
 | 8 | **Spoken greeting / narration** | ⬜ | A local greets you aloud (browser voice; Cloud TTS later). | Audio plays, sounds right |
-| 9 | **Learn a phrase** | ⬜ | Local phrase → transliteration → English, with audio. | Phrase + audio correct |
-| 10 | **Experience cards + real photos** | ⬜ | Places each local recommends, with **real images** (Places → Wikipedia → gradient). | Images are real & relevant |
+| 9 | **Learn a phrase — audio** | ⬜ | Hear the phrase spoken (text version already live in #7). | Audio correct |
 | 11 | **Swipe → itinerary** | ⬜ | Swipe the picks → a weather-aware day plan. | Day plan makes sense |
-| 12 | **Live events strip** | ⬜ | Real festivals/events this week (Gemini + Google Search grounding). | Events are real & current |
 
 ## Under the hood (done, affects the score)
 

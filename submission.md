@@ -25,11 +25,15 @@ Test login: `nihalgupta11213@gmail.com` / `hello1234` (or sign up — it's insta
 ## Describe the changes/updates made in the deployed version
 
 ```
-Ghummakad reimagines how travellers discover a place. Most trip apps hand you the same ranked list of tourist spots. Ghummakad helps you feel a destination and connect with its culture instead — which is the heart of this challenge.
+Ghummakad reimagines destination discovery. Trip apps hand you a ranked list of tourist spots; Ghummakad helps you feel a place and meet the culture behind it. Everything below is live in the deployed app:
 
-In the live app, a traveller signs in and simply describes the trip they're craving, in their own words — "misty hills, monasteries, hot food and total quiet." Ghummakad instantly understands the mood and surfaces three real destinations that match it, each with a vivid hook, a personal reason it fits you, and the best time to go. No filters, no endless scrolling — you describe a feeling, and it responds.
+1. Vibe Search — describe the trip you're craving in your own words ("misty hills, monasteries, total quiet") and get three real destinations that match the mood, each with a hook, why it fits you, best months — and a real photo of the place fetched live.
 
-This turns discovery from searching into a conversation. It's also the foundation for the fuller experience we're rolling out: meeting local characters, hearing their heritage stories, learning a phrase in their language, and building a day around the places locals genuinely love.
+2. Meet the Locals — enter any city and be introduced to a cast of local characters: an elder artisan, a market seller, a young guide. Each greets you and tells their own first-person heritage story, rich with the city's real places and traditions — plus a phrase in the local language with pronunciation and meaning, so you can "say it like a local."
+
+3. What's Happening Right Now — real festivals, fairs and performances in the city over the next two weeks, found live with Google Search grounding.
+
+All behind real sign-in, in a clean branded experience.
 ```
 
 ---
@@ -37,13 +41,17 @@ This turns discovery from searching into a conversation. It's also the foundatio
 ## Mention the Gen AI services utilized in the submission, and where did you utilize it?
 
 ```
-Google Gemini is the intelligence behind Ghummakad.
+Google Gemini (gemini-2.5-flash) is the intelligence behind every feature of Ghummakad:
 
-Right now it powers discovery: a traveller types a free-text "vibe" and Gemini reads the mood behind it, then recommends real destinations matched to that feeling — each with a hook, a reason it suits the traveller, and the best time to visit. It runs live on every request, so every recommendation is genuinely generated, never a canned list.
+1. Vibe Search — Gemini reads the mood behind a traveller's free-text "vibe" and recommends real destinations matched to that feeling, with a hook, a personal why-it-fits, and the best time to go.
 
-Coming next on the same Gemini engine: local characters who tell their own heritage stories, chat with you in character, teach you a phrase, and surface real cultural events happening this week — turning Gemini into a whole cast of local guides you can actually talk to.
+2. Meet the Locals — Gemini creates an authentic cast of local characters for any city and writes each one's first-person heritage story, grounded in the city's real places, crafts and traditions — plus a genuine local-language phrase with transliteration and meaning.
 
-(Implementation details are in the Technical notes below.)
+3. Live events — Gemini with Google Search grounding finds real festivals, fairs and performances happening in the city in the next two weeks, so events are current and verifiable, not hallucinated.
+
+4. Real place photos — destination cards fetch live images of each recommended place from public photo APIs (Google Places / Wikipedia).
+
+Every response is generated live on request — nothing canned, nothing mocked.
 ```
 
 ---

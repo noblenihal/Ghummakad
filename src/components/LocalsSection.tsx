@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react'
 import type { LocalPersona, LocalsResponse } from '@/lib/features/locals'
 import LocalChat from '@/components/LocalChat'
+import SpeakButton from '@/components/SpeakButton'
 
 type Props = {
   getToken: () => Promise<string | null>
@@ -139,11 +140,26 @@ function LocalCard({
 
       {open && (
         <div className="border-t border-ink/10 px-5 pb-5 pt-4">
-          <p className="whitespace-pre-line text-ink/80">{local.story}</p>
+          <div className="flex items-start justify-between gap-3">
+            <p className="whitespace-pre-line text-ink/80">{local.story}</p>
+            <SpeakButton
+              text={`${local.greeting} ${local.story}`}
+              lang="en-IN"
+              label={`Listen to ${local.name}'s story`}
+              className="shrink-0"
+            />
+          </div>
           <div className="mt-4 rounded-xl border border-ink/10 bg-marigold/10 p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-henna">
-              Say it like a local
-            </p>
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-xs font-semibold uppercase tracking-wide text-henna">
+                Say it like a local
+              </p>
+              <SpeakButton
+                text={local.phrase.local}
+                lang="hi-IN"
+                label={`Hear the phrase ${local.phrase.translit}`}
+              />
+            </div>
             <p className="mt-2 text-lg text-ink">{local.phrase.local}</p>
             <p className="mt-1 text-sm italic text-ink/70">{local.phrase.translit}</p>
             <p className="mt-1 text-sm text-ink/60">“{local.phrase.english}”</p>

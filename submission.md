@@ -25,15 +25,17 @@ Test login: `nihalgupta11213@gmail.com` / `hello1234` (or sign up — it's insta
 ## Describe the changes/updates made in the deployed version
 
 ```
-Ghummakad reimagines destination discovery. Trip apps hand you a ranked list of tourist spots; Ghummakad helps you feel a place and meet the culture behind it. Everything below is live in the deployed app:
+Ghummakad reimagines destination discovery: instead of a ranked list of tourist spots, you feel a place and meet the culture behind it. All live in the deployed app:
 
-1. Vibe Search — describe the trip you're craving in your own words ("misty hills, monasteries, total quiet") and get three real destinations that match the mood, each with a hook, why it fits you, best months — and a real photo of the place fetched live.
+1. Vibe Search — describe the trip you're craving ("misty hills, monasteries, total quiet") → three real destinations matching the mood, each with a hook, why it fits you, best months, and a real photo fetched live.
 
-2. Meet the Locals — enter any city and be introduced to a cast of local characters: an elder artisan, a market seller, a young guide. Each greets you and tells their own first-person heritage story, rich with the city's real places and traditions — plus a phrase in the local language with pronunciation and meaning, so you can "say it like a local."
+2. Meet the Locals — enter any city and get introduced to local characters (an elder artisan, a market seller, a young guide). Each tells their first-person heritage story — with audio narration — and teaches you a local phrase you can hear spoken aloud.
 
-3. What's Happening Right Now — real festivals, fairs and performances in the city over the next two weeks, found live with Google Search grounding.
+3. Chat with a Local — ask them anything, they answer in character; conversations stay warmly scoped to travel and culture.
 
-All behind real sign-in, in a clean branded experience.
+4. Weave Your Day — pick the experiences you love; Ghummakad weaves them into a day plan adapted to the city's real weather, sunrise and sunset.
+
+5. What's Happening Right Now — real events in the next two weeks via Google Search grounding.
 ```
 
 ---
@@ -41,17 +43,21 @@ All behind real sign-in, in a clean branded experience.
 ## Mention the Gen AI services utilized in the submission, and where did you utilize it?
 
 ```
-Google Gemini (gemini-2.5-flash) is the intelligence behind every feature of Ghummakad:
+Google Gemini (gemini-2.5-flash) powers every intelligent feature in Ghummakad:
 
-1. Vibe Search — Gemini reads the mood behind a traveller's free-text "vibe" and recommends real destinations matched to that feeling, with a hook, a personal why-it-fits, and the best time to go.
+1. Vibe Search — Gemini reads the mood behind a free-text "vibe" and recommends real destinations matched to that feeling.
 
-2. Meet the Locals — Gemini creates an authentic cast of local characters for any city and writes each one's first-person heritage story, grounded in the city's real places, crafts and traditions — plus a genuine local-language phrase with transliteration and meaning.
+2. Meet the Locals — Gemini creates an authentic cast of locals for any city, writes each one's first-person heritage story grounded in real places and traditions, plus a genuine local phrase with transliteration.
 
-3. Live events — Gemini with Google Search grounding finds real festivals, fairs and performances happening in the city in the next two weeks, so events are current and verifiable, not hallucinated.
+3. Chat with a Local — a fully dynamic, in-character conversation, guardrailed to travel/culture topics only, no fabricated places.
 
-4. Real place photos — destination cards fetch live images of each recommended place from public photo APIs (Google Places / Wikipedia).
+4. Weave Your Day — Gemini composes chosen experiences into a narrated day plan, adapting to live weather, sunrise and sunset (Open-Meteo).
 
-Every response is generated live on request — nothing canned, nothing mocked.
+5. Live events — Gemini with Google Search grounding surfaces real, current events — verifiable, not hallucinated.
+
+6. Real place photos — fetched live from Google Places / Wikipedia APIs.
+
+Every response is generated live per request. Nothing canned, nothing mocked.
 ```
 
 ---

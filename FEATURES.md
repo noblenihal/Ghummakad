@@ -21,14 +21,9 @@ Live app: **http://168.144.24.204:8081** · Login: `nihalgupta11213@gmail.com` /
 | 10 | **Real photos on destination cards** | 🧪 | Run a Vibe Search → each destination card should show a real photo (Wikipedia/Places), or a clean gradient if none exists. | |
 | 12 | **Live events strip** | 🧪 | "What's happening right now": enter a city → real festivals/events in the next 2 weeks, found via Google Search grounding. | |
 | 13 | **Chat with a local** | 🧪 | Expand a local's card → ask anything ("where do you actually eat?") → they answer in character. Off-topic questions (coding, politics…) get politely deflected back to travel. | |
-
-## Building next
-
-| # | Feature | Status | What it does | Needs testing when done |
-|---|---------|--------|--------------|--------------------------|
-| 8 | **Spoken greeting / narration** | ⬜ | A local greets you aloud (browser voice; Cloud TTS later). | Audio plays, sounds right |
-| 9 | **Learn a phrase — audio** | ⬜ | Hear the phrase spoken (text version already live in #7). | Audio correct |
-| 11 | **Swipe → itinerary** | ⬜ | Swipe the picks → a weather-aware day plan. | Day plan makes sense |
+| 8 | **Story narration (audio)** | 🧪 | Expand a local's card → "Listen" button next to the story → the local's greeting + story read aloud. Press again to stop. | |
+| 9 | **Phrase audio** | 🧪 | In "Say it like a local" → "Listen" → hear the phrase pronounced. | |
+| 11 | **Weave your day (itinerary)** | 🧪 | Enter a city → pick experiences with ♥ → "Weave my day" → a narrated day plan adapted to today's real weather/sunrise/sunset. | |
 
 ## Under the hood (done, affects the score)
 

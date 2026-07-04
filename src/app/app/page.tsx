@@ -7,6 +7,7 @@ import { supabaseBrowser } from '@/lib/supabase/browser'
 import VibeSearchSection from '@/components/VibeSearchSection'
 import LocalsSection from '@/components/LocalsSection'
 import EventsSection from '@/components/EventsSection'
+import DayWeaverSection from '@/components/DayWeaverSection'
 
 type Status = 'checking' | 'ready'
 
@@ -66,6 +67,7 @@ export default function AppPage() {
       <main className="mx-auto max-w-3xl space-y-16 px-6 py-10">
         <VibeSearchSection getToken={getToken} />
         <LocalsSection getToken={getToken} />
+        <DayWeaverSection getToken={getToken} />
         <EventsSection getToken={getToken} />
       </main>
     </div>
